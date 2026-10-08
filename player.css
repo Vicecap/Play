@@ -1,0 +1,39 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: Arial, sans-serif; }
+#container { width: 100%; height: 100%; display: flex; flex-direction: column; background: #000; }
+#toolbar { min-height: 48px; display: flex; align-items: center; gap: 12px; padding: 6px 10px; background: #151515; border-bottom: 1px solid #333; }
+.field { min-width: 0; display: flex; align-items: center; gap: 7px; color: #aaa; font-size: 12px; white-space: nowrap; }
+.source-field { flex: 1; }
+select { height: 34px; min-width: 128px; max-width: 100%; color: #fff; background: #252525; border: 1px solid #464646; border-radius: 4px; padding: 0 28px 0 9px; font: inherit; font-size: 13px; outline: none; cursor: pointer; }
+#sourceSelect { width: min(430px, 100%); }
+select:focus-visible, button:focus-visible { border-color: #35c46a; outline: 2px solid #35c46a; outline-offset: 1px; }
+#playerWrap { position: relative; flex: 1; min-height: 0; background: #000; }
+#video, #engineHost, #framePlayer { position: absolute; inset: 0; width: 100%; height: 100%; background: #000; border: 0; }
+#video { object-fit: contain; }
+#engineHost, #framePlayer { display: none; }
+#status { position: absolute; inset: 0; z-index: 20; display: none; place-items: center; padding: 24px; color: #ddd; background: #000; text-align: center; }
+#status.visible { display: grid; }
+.status-inner { display: grid; justify-items: center; gap: 12px; max-width: 420px; }
+#spinner { width: 28px; height: 28px; border: 3px solid #444; border-top-color: #35c46a; border-radius: 50%; animation: spin .8s linear infinite; }
+#spinner.hidden, #retryButton.hidden { display: none; }
+#statusText { font-size: 14px; line-height: 1.4; }
+#retryButton { min-width: 92px; height: 36px; color: #fff; background: #267a45; border: 1px solid #35c46a; border-radius: 4px; padding: 0 14px; font: inherit; font-size: 13px; cursor: pointer; }
+@keyframes spin { to { transform: rotate(360deg); } }
+[hidden] { display: none !important; }
+#setupPanel { padding: 16px; color: #ddd; background: #151515; border-bottom: 1px solid #333; }
+#setupPanel h1 { margin: 0 0 12px; font-size: 18px; }
+#setupForm { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; }
+#setupForm label { display: grid; gap: 6px; font-size: 13px; }
+#setupForm .lookup-value { flex: 1; min-width: 180px; }
+#setupForm input { width: 100%; height: 34px; border: 1px solid #464646; border-radius: 4px; background: #252525; color: #fff; padding: 0 9px; font: inherit; }
+#setupForm input:focus-visible { outline: 2px solid #35c46a; }
+#setupForm input[type="number"] { width: 75px; }
+#setupForm button { height: 34px; border: 1px solid #35c46a; border-radius: 4px; background: #267a45; color: #fff; padding: 0 16px; cursor: pointer; }
+noscript { display: block; padding: 20px; color: #fff; }
+@media (max-width: 560px) {
+  #toolbar { gap: 7px; padding-inline: 7px; }
+  .field { flex: 1; }
+  .field > span { position: absolute; width: 1px; height: 1px; overflow: hidden; }
+  #sourceSelect, #playerSelect { width: 100%; min-width: 0; }
+  .source-field { flex: 1.5; }
+}
